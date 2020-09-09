@@ -3,33 +3,60 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  return arr.sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  return arr.max(2).sum
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  return !!arr.uniq.combination(2).detect { |a, b| a + b == n }
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  return "Hello, " + "#{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  return (['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'].include? s[0]).! && (('A'..'Z') === s[0] || ('a'..'z') === s[0])
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  return (s.delete('01') == '') && (s.to_i(2) % 4 == 0) && (s != '') 
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  
+  def isbn
+    @isbn
+  end
+  
+  def price
+    @price
+  end
+  
+  def isbn=(isbn) 
+    @isbn = isbn 
+  end
+  
+  def price=(price) 
+    @price = price 
+  end
+  
+  def initialize(isbn, price)
+      raise ArgumentError, 'isbn is empty' unless isbn != ''
+      raise ArgumentError, 'price is not valid' unless price > 0
+      @isbn = isbn
+      @price = price
+  end
+  
+  def price_as_string()
+    ans = "$" + "%0.2f" % [@price]
+    return ans
+  end
 end
